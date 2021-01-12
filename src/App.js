@@ -1,9 +1,11 @@
-import React from 'react';
-import './App.css';
+import MapsQuery from './MapsQuery.json';
 
 const App = () => {
-    const getWeatherRate = async () => {
-        const response = await fetch('https://xivapi.com/WeatherRate/91');
+    const getMaps = async () => {
+        const response = await fetch('https://xivapi.com/Search', {
+            method: 'POST',
+            body: JSON.stringify(MapsQuery)
+        });
         
         if (response.status !== 200) {
             throw new Error('Cannot fetch the data.');
@@ -14,7 +16,7 @@ const App = () => {
         return data;
     };
     
-    getWeatherRate()
+    getMaps()
         .then(data => console.log(`resolved: ${data}`))
         .catch(err => console.log(`rejected: ${err.message}`));
 
