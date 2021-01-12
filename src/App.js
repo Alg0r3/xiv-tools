@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const getWeatherRate = async () => {
+        const response = await fetch('https://xivapi.com/WeatherRate/91');
+        
+        if (response.status !== 200) {
+            throw new Error('Cannot fetch the data.');
+        }
+        
+        const data = await response.json();
+        
+        return data;
+    };
+    
+    getWeatherRate()
+        .then(data => console.log(`resolved: ${data}`))
+        .catch(err => console.log(`rejected: ${err.message}`));
+
+    return (
+        <div className='App'>
+            W.I.P.
+        </div>
+    );
+};
 
 export default App;
