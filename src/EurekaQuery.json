@@ -1,0 +1,20 @@
+{
+    "indexes": "",
+    "columns": "Image,TerritoryType.Map.ID,TerritoryType.Map.MapFilename,TerritoryType.PlaceName.Name_de,TerritoryType.PlaceName.Name_en,TerritoryType.PlaceName.Name_fr,TerritoryType.PlaceName.Name_ja,TerritoryType.WeatherRate",
+    "body": {
+        "query": {
+            "bool": {
+                "must": [{
+                    "wildcard": {
+                        "NameCombined_en": "*eureka*"
+                    }
+                },
+                {
+                    "exists": {
+                        "field": "TerritoryType.ID"
+                    }
+                }]
+            }
+        }
+    }
+}
