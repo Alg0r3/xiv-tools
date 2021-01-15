@@ -1,6 +1,6 @@
 {
     "indexes": "Map",
-    "columns": "ID,MapFilename,PlaceName.Name_de,PlaceName.Name_en,PlaceName.Name_fr,PlaceName.Name_ja,PlaceNameRegion.ID,TerritoryType.WeatherRate",
+    "columns": "ID,MapFilename,PlaceName.Name_de,PlaceName.Name_en,PlaceName.Name_fr,PlaceName.Name_ja,TerritoryType.WeatherRate",
     "body": {
       	"query": {
         	"bool": {

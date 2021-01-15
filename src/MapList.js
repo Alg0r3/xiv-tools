@@ -3,7 +3,7 @@ const MapList = ({maps}) => {
         <div className="map-list">
             <ul>
                 {maps.map(map => (
-                    <li>{map.PlaceName.Name_en}</li>
+                    <li key={map.ID}>{map.PlaceName.Name_en}</li>
                 ))}
             </ul>
         </div>
