@@ -2,7 +2,10 @@ import Weather from './Weather';
 
 const App = () => {
     return (
-        <Weather/>
+        <div className="App">
+            <h1>XIV Tools</h1>
+            <Weather />
+        </div>
     );
 };
 
