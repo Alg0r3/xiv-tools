@@ -15,7 +15,7 @@ const useFetch = (url) => {
         
             const data = await response.json();
         
-            setData(data.Results);
+            setData(data);
             setIsLoading(false);
             setError(null);
         };
@@ -27,7 +27,7 @@ const useFetch = (url) => {
                 setError(err.message)
             });
     }, [url]);
-
+    
     return {data, isLoading, error};
 };
 

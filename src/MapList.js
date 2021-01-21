@@ -1,10 +1,17 @@
+import Forecast from './Forecast';
+
 const MapList = ({maps}) => {
     return(
-        <div className="map-list">
-            {maps.map(map => (
-                <div key={map.ID}>{map.PlaceName.Name_en}</div>
-            ))}
-        </div>
+        <table className="map-list">
+            <tbody>
+                {maps.map(map => (        
+                    <tr key={map.ID}>    
+                        <td>{map.PlaceName.Name_en}</td>
+                        <Forecast rateId={map.TerritoryType.WeatherRate}/>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     );
 };
 
