@@ -2,17 +2,12 @@ import useFetch from './useFetch';
 
 const calcForecast = (time = 0) => {
     const unixSeconds = Date.now() / 1000 + time;
-    
-    // 1 bell = 1 Eorzean hour, 1 sun = 1 Eorzean day 
-    const bell = Math.trunc(unixSeconds / 175);
-    const sun = Math.trunc(unixSeconds / 4200);
-
-    const increment = (bell + 8 - (bell % 8)) % 24;
-
-    const calcBase = sun * 100 + increment;
+    const eorzeaHour = Math.trunc(unixSeconds / 175);
+    const eorzeaDay = Math.trunc(unixSeconds / 4200);
+    const increment = (eorzeaHour + 8 - (eorzeaHour % 8)) % 24;
+    const calcBase = eorzeaDay * 100 + increment;
     const step1 = (calcBase << 11) ^ calcBase;
     const step2 = (step1 >>> 8) ^ step1;
-
     const weatherChance = step2 % 100;
 
     return weatherChance;
@@ -34,30 +29,25 @@ const Forecast = ({rateId}) => {
 
     for (let val in data) {
         if (val.match(/Rate/g)) arrRate.push(data[val]);
+        else if (val.match(/Weather[0-9]$/gm) && data[val] !== null) arrWeather.push(data[val]);
     }
 
-    for (let val in data) {
-        if (val.match(/Weather/g) && typeof(data[val]) === 'object' && data[val] !== null) arrWeather.push(data[val]);
-    }
+    const weather = [];
+    let time = -1400;
 
-    const prevWeather = calcWeather(calcForecast(-1400), arrRate, arrWeather);
-    const currWeather = calcWeather(calcForecast(), arrRate, arrWeather);
-    const nextWeather = calcWeather(calcForecast(1400), arrRate, arrWeather);
+    for (let i = 0; i < 10; i++) {
+        weather.push(
+            <td key={i} className="forecast-cell">
+                {error && <div className="error">{error}</div>}
+                {isLoading ? <div className="loading">Loading...</div> : <span>{calcWeather(calcForecast(time), arrRate, arrWeather)}</span>}
+            </td>
+        );
+        time += 1400;
+    }
 
     return(
         <>
-            <td>
-                {error && <div className="error">{error}</div>}
-                {isLoading ? <div className="loading">Loading...</div> : prevWeather}
-            </td>
-            <td>
-                {error && <div className="error">{error}</div>}
-                {isLoading ? <div className="loading">Loading...</div> : currWeather}
-            </td>
-            <td>
-                {error && <div className="error">{error}</div>}
-                {isLoading ? <div className="loading">Loading...</div> : nextWeather}
-            </td>
+            {weather}
         </>
     );
 };
