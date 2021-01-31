@@ -1,30 +1,14 @@
-import http from 'http';
-import path from 'path';
-import fs from 'fs';
+import express from 'express';
 
-import mimeTypes from './mime-types.js';
+const PORT = process.env.PORT || 5000;
+const app = express();
 
-const hostname = process.env.HOST || '127.0.0.1';
-const port = process.env.PORT || 5000;
-
-// On each client request, returns a callback func
-const server = http.createServer((req, res) => {
-    console.log(`Request: ${req.url}`);
-
-    let filePath = `.${req.url}`
-    if (filePath === './') filePath = './index.html';
+app.get('/', (req, res) => {
+    console.log(`Request : ${req.url}`);
     
-    const extension = path.extname(filePath).toLocaleLowerCase();
-    const contentType = mimeTypes[extension] || 'application/octet-stream';
-
-    res.writeHead(200, {'Content-type': contentType});
-
-    fs.readFile(filePath, (err, data) => {
-        err ? console.log(err.message) : res.write(data);
-        res.end();
-    });
+    // Headers and status codes are inferred
+    res.send('IT\'S WORKING');
 });
 
-server.listen(port, hostname, err => {
-    err ? console.log(err.message) : console.log(`Server listening on port: ${port}`);
-});
+// http.createServer()
+app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
