@@ -25,7 +25,7 @@ let time = 1400000;
 
 for (let i = 0; i < 8; i++) {
     timer.push(
-        <td>{getEorzeaTimeChunk(time)}</td>
+        <td key={time/1000}>{getEorzeaTimeChunk(time)}</td>
     );
     time += 1400000;
 }

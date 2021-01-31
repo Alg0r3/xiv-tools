@@ -17,7 +17,7 @@ const REGIONS = [
 ];
 
 const Weather = () => {
-    const [id, setId] = useState(22);
+    const [id, setId] = useState(26);
     const {data, isLoading, error} = useFetch(`https://xivapi.com/Search?indexes=Map&columns=ID,PlaceName.Name_de,PlaceName.Name_en,PlaceName.Name_fr,PlaceName.Name_ja,TerritoryType.WeatherRate&filters=GameContentLinks.TerritoryType!,GamePatch.Banner!,TerritoryType.Aetheryte!,TerritoryType.BGM!!,TerritoryType.PlaceNameIconID>-1,TerritoryType.WeatherRate>0,PlaceNameRegionTargetID=${id}`);
 
     return (
