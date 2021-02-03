@@ -1,14 +1,15 @@
 import express from 'express';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 5000;
+import MapRoutes from './routes/maps.js';
+
+dotenv.config();
 const app = express();
 
-app.get('/', (req, res) => {
-    console.log(`Request : ${req.url}`);
-    
-    // Headers and status codes are inferred
-    res.send('IT\'S WORKING');
-});
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use('/maps', MapRoutes);
 
 // http.createServer()
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
