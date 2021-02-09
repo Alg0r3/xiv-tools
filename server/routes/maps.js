@@ -1,10 +1,10 @@
 import express from 'express';
 
-import { getMaps, sendMaps } from '../controllers/maps.js';
+import { getMaps, getMap } from '../controllers/maps.js';
 
 const router = express.Router();
 
 router.get('/', getMaps);
-router.post('/', sendMaps);
+router.get('/:mapId', getMap);
 
 export default router;
