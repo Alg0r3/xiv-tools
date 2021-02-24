@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getMaps, getMap } from '../controllers/maps.js';
+import { getMaps, getMap } from '../controllers/map.js';
 
 const router = express.Router();
 

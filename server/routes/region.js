@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getRegions, getRegion, getRegionMaps } from '../controllers/regions.js';
+import { getRegions, getRegion, getRegionMaps } from '../controllers/region.js';
 
 const router = express.Router();
 

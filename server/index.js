@@ -2,8 +2,11 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import RegionsRoutes from './routes/regions.js'
-import MapsRoutes from './routes/maps.js';
+import RegionRoutes from './routes/region.js'
+import MapRoutes from './routes/map.js';
+import WeatherRatesRoutes from './routes/weatherRates.js';
+import TestRoutes from './routes/test.js';
+
 
 dotenv.config();
 const app = express();
@@ -16,5 +19,7 @@ mongoose.connect(CONNECTION_URL_DB, { useNewUrlParser: true, useUnifiedTopology:
     .catch((err) => console.log(err.message))
 
 // Middleware
-app.use('/regions', RegionsRoutes);
-app.use('/maps', MapsRoutes);
+app.use('/region', RegionRoutes);
+app.use('/map', MapRoutes);
+app.use('/weatherRates', WeatherRatesRoutes);
+app.use('/test', TestRoutes);

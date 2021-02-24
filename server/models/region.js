@@ -1,13 +1,16 @@
 import mongoose from 'mongoose';
 
+import Map from './map.js'
+
 const regionSchema = mongoose.Schema({
     id: Number,
     name_de: String,
     name_en: String,
     name_fr: String,
-    name_ja: String
+    name_ja: String,
+    maps: [Map.schema]
 });
 
-const Region = Mongoose.model('Region', regionSchema);
+const Region = mongoose.model('Region', regionSchema);
 
 export default Region;
