@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getAllWeatherRates, getWeatherRates } from '../controllers/weatherRates.js';
+import { getAllWeatherRates, getWeatherRates } from '../controllers/weatherRate.js';
 
 const router = express.Router();
 

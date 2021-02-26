@@ -8,7 +8,10 @@ const regionSchema = mongoose.Schema({
     name_en: String,
     name_fr: String,
     name_ja: String,
-    maps: [Map.schema]
+    maps: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: Map
+    }]
 });
 
 const Region = mongoose.model('Region', regionSchema);

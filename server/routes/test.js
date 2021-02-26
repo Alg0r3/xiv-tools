@@ -1,9 +1,10 @@
 import express from 'express';
 
-import { createWeatherRates } from '../data/test.js';
+import { createMaps, createWeatherRates } from '../data/test.js';
 
 const router = express.Router();
 
-router.get('/', createWeatherRates);
+router.get('/weatherrate', createWeatherRates);
+router.get('/map', createMaps);
 
 export default router;

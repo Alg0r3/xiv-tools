@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get('/', getRegions);
 router.get('/:regionId', getRegion);
-router.get('/:regionId/maps', getRegionMaps);
+router.get('/:regionId/map', getRegionMaps);
 
 export default router;

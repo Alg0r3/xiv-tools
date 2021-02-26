@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import WeatherRate from './weatherRates.js';
+import WeatherRate from './weatherRate.js';
 
 const mapSchema = mongoose.Schema({
     id: Number,
@@ -8,7 +8,10 @@ const mapSchema = mongoose.Schema({
     name_en: String,
     name_fr: String,
     name_ja: String,
-    weatherRate: WeatherRate.schema
+    weather_rate: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: WeatherRate 
+    }
 });
 
 const Map = mongoose.model('Map', mapSchema);

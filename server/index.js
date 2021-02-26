@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import RegionRoutes from './routes/region.js'
 import MapRoutes from './routes/map.js';
-import WeatherRatesRoutes from './routes/weatherRates.js';
+import WeatherRateRoutes from './routes/weatherRate.js';
 import TestRoutes from './routes/test.js';
 
 
@@ -21,5 +21,5 @@ mongoose.connect(CONNECTION_URL_DB, { useNewUrlParser: true, useUnifiedTopology:
 // Middleware
 app.use('/region', RegionRoutes);
 app.use('/map', MapRoutes);
-app.use('/weatherRates', WeatherRatesRoutes);
+app.use('/weatherrate', WeatherRateRoutes);
 app.use('/test', TestRoutes);
